@@ -17,7 +17,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const queryClient = useQueryClient();
 
   const toggleMutation = useMutation({
-    mutationFn: () => todoApi.mark(todo.id, "DONE"),
+    mutationFn: () => todoApi.mark(todo.id, todo.isDone ? "UNDONE" : "DONE"),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
       toast.success(
@@ -80,6 +80,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             variant={todo.isDone ? 'outline' : 'default'}
             onClick={() => toggleMutation.mutate()}
             disabled={toggleMutation.isPending}
+            className={todo.isDone ? '' : 'bg-[#0062FF] hover:bg-blue-800'}
           >
             {todo.isDone ? (
               <RotateCcw className="h-4 w-4" />

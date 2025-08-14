@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { authApi } from '@/lib/api';
 import { useAuthStore } from '@/store/useAuthStore';
 import { registerSchema, type RegisterInput } from '@/lib/schemas';
+import Link from 'next/link';
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -44,9 +45,10 @@ export default function RegisterForm() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your account
+          <h2 className="mt-6 text-center text-[56px] font-extrabold text-[#44444F]">
+            Register
           </h2>
+          <p className='text-base text-center text-[#92929D] leading-[26px] font-normal'>Let&apos;s Sign up first for enter into Square Website. Uh She Up!</p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4">
@@ -85,20 +87,20 @@ export default function RegisterForm() {
           <div>
             <Button
               type="submit"
-              className="w-full"
+              className="w-full bg-[#0062FF] hover:bg-blue-800 text-xs"
               disabled={registerMutation.isPending}
             >
-              {registerMutation.isPending ? 'Creating account...' : 'Sign up'}
+              {registerMutation.isPending ? 'Creating account...' : 'Register'}
             </Button>
           </div>
 
           <div className="text-center">
-            <a
+            <Link
               href="/auth/login"
-              className="text-sm text-blue-600 hover:text-blue-500"
+              className="text-sm text-[#0062FF] hover:text-blue-500"
             >
               Already have an account? Sign in
-            </a>
+            </Link>
           </div>
         </form>
       </div>

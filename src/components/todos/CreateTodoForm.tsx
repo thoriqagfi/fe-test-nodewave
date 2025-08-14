@@ -44,7 +44,7 @@ export default function CreateTodoForm() {
 
   if (!isOpen) {
     return (
-      <Button onClick={() => setIsOpen(true)} className="w-full mb-6">
+      <Button onClick={() => setIsOpen(true)} className="w-full mb-6 bg-[#0062FF] hover:bg-blue-800">
         <Plus className="h-4 w-4 mr-2" />
         Add New Todo
       </Button>
@@ -83,7 +83,7 @@ export default function CreateTodoForm() {
           <Button
             type="submit"
             disabled={createTodoMutation.isPending}
-            className="flex-1"
+            className="flex-1 bg-[#0062FF] hover:bg-blue-800"
           >
             {createTodoMutation.isPending ? 'Creating...' : 'Create Todo'}
           </Button>

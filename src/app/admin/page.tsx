@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Button } from '@/components/ui/button';
@@ -11,18 +10,6 @@ import { AdminRoute } from '@/components/guards/AuthGuard';
 export default function AdminPage() {
   const router = useRouter();
   const { user, isAuthenticated, logout } = useAuthStore();
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/auth/login');
-      return;
-    }
-
-    if (user?.role !== 'ADMIN') {
-      router.push('/dashboard');
-      return;
-    }
-  }, [isAuthenticated, user, router]);
 
   const handleLogout = () => {
     logout();

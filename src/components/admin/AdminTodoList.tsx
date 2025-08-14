@@ -77,8 +77,6 @@ export default function AdminTodoList() {
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-lg shadow-sm border">
         <h2 className="text-xl font-semibold mb-4">All Todos (Admin)</h2>
-
-        {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <Select
             value={String(pagination.limit)}
@@ -86,7 +84,7 @@ export default function AdminTodoList() {
               setPagination((prev) => ({
                 ...prev,
                 limit: Number(val),
-                page: 1, // reset page when limit changes
+                page: 1,
               }))
             }
           >
@@ -115,7 +113,6 @@ export default function AdminTodoList() {
           </Select>
         </div>
 
-        {/* Todos List */}
         {todos.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500">No todos found.</p>

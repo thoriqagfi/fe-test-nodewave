@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { authApi } from '@/lib/api';
 import { useAuthStore } from '@/store/useAuthStore';
 import { loginSchema, type LoginInput } from '@/lib/schemas';
+import Link from 'next/link';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -44,9 +45,10 @@ export default function LoginForm() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+          <h2 className="mt-6 text-center text-[56px] font-extrabold text-[#44444F]">
+            Sign in
           </h2>
+          <p className='text-base text-center text-[#92929D] leading-[26px] font-normal'>Just sign in if you have an account in here. Enjoy our Website</p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4">
@@ -83,20 +85,20 @@ export default function LoginForm() {
           <div>
             <Button
               type="submit"
-              className="w-full"
+              className="w-full bg-[#0062FF] hover:bg-blue-800 text-xs"
               disabled={loginMutation.isPending}
             >
-              {loginMutation.isPending ? 'Signing in...' : 'Sign in'}
+              {loginMutation.isPending ? 'Signing in...' : 'Login'}
             </Button>
           </div>
 
           <div className="text-center">
-            <a
+            <Link
               href="/auth/register"
-              className="text-sm text-blue-600 hover:text-blue-500"
+              className="text-sm text-[#0062FF] hover:text-blue-500"
             >
               Don&apos;t have an account? Sign up
-            </a>
+            </Link>
           </div>
         </form>
       </div>

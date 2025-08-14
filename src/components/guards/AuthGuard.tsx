@@ -40,7 +40,6 @@ export function AuthGuard({
     }
   }, [isAuthenticated, user, router, requireAuth, requireAdmin, redirectTo]);
 
-  // Don't render anything while redirecting
   if (requireAuth && !isAuthenticated) {
     return null;
   }
@@ -56,7 +55,6 @@ export function AuthGuard({
   return <>{children}</>;
 }
 
-// Specific guard components for cleaner usage
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return (
     <AuthGuard requireAuth={true}>

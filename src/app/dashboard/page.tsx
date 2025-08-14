@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Button } from '@/components/ui/button';
@@ -10,22 +9,12 @@ import { ProtectedRoute } from '@/components/guards/AuthGuard';
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { user, isAuthenticated, logout } = useAuthStore();
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/auth/login');
-    }
-  }, [isAuthenticated, router]);
+  const { user, logout } = useAuthStore();
 
   const handleLogout = () => {
     logout();
     router.push('/');
   };
-
-  if (!isAuthenticated) {
-    return null;
-  }
 
   return (
     <ProtectedRoute>
